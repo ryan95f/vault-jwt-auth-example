@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  vault:
+    container_name: vault
+    image: vault:latest
+    ports:
+      - 8200:8200

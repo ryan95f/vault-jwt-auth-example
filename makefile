@@ -3,7 +3,7 @@ plan:
 	terraform -chdir=terraform/ plan -out plan.tfplan
 
 apply:
-	terraform apply -chdir="terraform" -auto-approve
+	terraform -chdir="terraform" apply -auto-approve 
 
 destory:
-	terraform destroy -chdir="terraform" -auto-approve
+	terraform -chdir="terraform" destroy -auto-approve
