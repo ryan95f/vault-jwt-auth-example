@@ -2,7 +2,7 @@ resource "vault_mount" "super_secrets" {
   path        = "secrets"
   type        = "kv"
   options     = { version = "2" }
-  description = "Hello world from Terraform"
+  description = "Secret Engine for managing environment secrets"
 }
 
 resource "vault_kv_secret_v2" "production" {
@@ -17,6 +17,6 @@ resource "vault_kv_secret_v2" "development" {
   mount = vault_mount.super_secrets.path
   name  = "development"
   data_json = jsonencode({
-    message       = "My Development Secret"
+    message = "My Development Secret"
   })
 }
