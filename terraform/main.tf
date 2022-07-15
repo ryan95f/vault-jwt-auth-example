@@ -1,9 +1,6 @@
-resource "vault_jwt_auth_backend" "jwt_backend" {
-  description = "Demonstration of the Terraform JWT auth backend"
-  path        = "jwt"
-  jwt_validation_pubkeys = [
-    file("../keys/jwtRS256.key.pub")
-  ]
+module "jwy_backend" {
+  description     = "Demonstration of the Terraform JWT auth backend"
+  public_key_path = "../keys/jwtRS256.key.pub"
 }
 
 module "production" {

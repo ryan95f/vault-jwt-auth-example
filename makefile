@@ -1,9 +1,17 @@
+TERRAFORM_PATH = terraform
+TERRAFORM = terraform -chdir=$(TERRAFORM_PATH)/
+
 plan:
-	terraform -chdir=terraform/ init
-	terraform -chdir=terraform/ plan -out plan.tfplan
+	$(TERRAFORM) plan -out plan.tfplan
 
 apply:
-	terraform -chdir="terraform" apply -auto-approve 
+	$(TERRAFORM) apply -auto-approve 
 
 destory:
-	terraform -chdir="terraform" destroy -auto-approve
+	$(TERRAFORM) destroy -auto-approve
+
+clean:
+	rm -rf $(TERRAFORM_PATH)/.terraform/*
+	rm $(TERRAFORM_PATH)/terraform.lock.hcl
+	rm $(TERRAFORM_PATH)/*tfplan
+	rm $(TERRAFORM_PATH)/*tfstate*
