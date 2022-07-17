@@ -15,3 +15,11 @@ module "environments" {
   policy_file_path = each.value.policy_path
   bound_claims     = each.value.bound_claims
 }
+
+module "secrets" {
+  source = "./modules/secrets"
+
+  path        = var.secrets_path
+  description = var.secrets_description
+  secrets     = var.secrets
+}
