@@ -5,14 +5,13 @@ module "jwt_backend" {
   public_key_path = "../keys/jwtRS256.key.pub"
 }
 
-module "production" {
-  source = "./modules/jwt-environment"
+module "environments" {
+  source   = "./modules/jwt-environment"
+  for_each = var.environments
 
-  role_name        = "production"
-  user_claim       = "branch"
+  role_name        = each.key
+  user_claim       = each.value.user_claim
   backend_path     = module.jwt_backend.path
-  policy_file_path = "./policies/production.hcl"
-  bound_claims = {
-    branch = "prod"
-  }
+  policy_file_path = each.value.policy_path
+  bound_claims     = each.value.bound_claims
 }
