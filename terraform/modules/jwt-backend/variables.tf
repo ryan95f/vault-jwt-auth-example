@@ -5,6 +5,7 @@ variable "description" {
 
 variable "public_key_path" {
   type        = string
+  sensitive   = true
   description = "(Required) The path to the public key to validate JWT tokens"
 }
 
