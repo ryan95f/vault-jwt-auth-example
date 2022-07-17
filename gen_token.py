@@ -2,6 +2,7 @@ import jwt
 import argparse
 from datetime import timezone
 from datetime import datetime
+from datetime import timedelta
 
 
 def load_private_key(filepath):
@@ -12,10 +13,13 @@ def load_private_key(filepath):
 def main():
     private_key = load_private_key('keys/jwtRS256.key')
 
+    iat = datetime.now(tz=timezone.utc)
     claims = {
         "message": "message",
-        "branch": "hello",
-        "exp": datetime.now(tz=timezone.utc) + 20
+        "branch": "main",
+        "iat": iat,
+        "exp": iat + timedelta(hours=1),
+        "nbf": iat
     }
     token = jwt.encode(claims, private_key, algorithm="RS256")
     print(token)
