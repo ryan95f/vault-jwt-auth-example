@@ -1,5 +1,4 @@
 import jwt
-import argparse
 from datetime import timezone
 from datetime import datetime
 from datetime import timedelta
@@ -15,7 +14,6 @@ def main():
 
     iat = datetime.now(tz=timezone.utc)
     claims = {
-        "message": "message",
         "branch": "main",
         "iat": iat,
         "exp": iat + timedelta(hours=1),

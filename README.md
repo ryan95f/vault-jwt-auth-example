@@ -76,6 +76,6 @@ make apply
 
 ```bash
 export JWT="$(python gen_token.py)"
-export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=test-role jwt=$JWT)"
+export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=production jwt=$JWT)"
 vault kv get -mount=secrets -field=message production
 ```

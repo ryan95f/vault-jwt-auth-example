@@ -4,6 +4,8 @@ TERRAFORM = terraform -chdir=$(TERRAFORM_PATH)/
 TF_VARIABLES = variables.tfvars
 TF_PLAN = plan.tfplan
 
+.PHONY: plan apply
+
 plan:
 	$(TERRAFORM) init
 	$(TERRAFORM) plan -var-file=$(TF_VARIABLES) -out $(TF_PLAN)
